@@ -7,6 +7,8 @@ require('dotenv').config();
 const Notes=require("../schemas/noteSchema")
 const Category=require('../schemas/categorySchema')
 
+const isProd = process.env.NODE_ENV === "production";
+
 const saveUser=async(req, res)=>{
     try {
       const {username, email, password, emailUpdates}=req.body;
@@ -102,11 +104,12 @@ try {
     )
 
 
-    res.cookie("token",token, {
-        httpOnly:true,
-        secure: process.env.NODE_ENV==='production',
-        sameSite:"lax"
-    })
+res.cookie("token", token, {
+    httpOnly: true,
+    secure: isProd,
+    sameSite: isProd ? "none" : "lax",
+    maxAge: 60 * 60 * 1000, 
+});
 
     return res.status(200).json({
         success:true,
@@ -130,11 +133,11 @@ try {
 
 const logout=async(req, res)=>{
     try {
-        res.clearCookie('token',{
-            httpOnly:true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: 'lax',
-        })
+        res.clearCookie("token", {
+    httpOnly: true,
+    secure: isProd,
+    sameSite: isProd ? "none" : "lax",
+});
         return res.status(200).json({ 
     success: true, 
     message: 'Logged out successfully' 
