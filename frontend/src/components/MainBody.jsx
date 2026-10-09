@@ -292,7 +292,7 @@ const safeCategory = (typeof rawCategory === "string" && rawCategory.includes("o
 
   const getAllNotes = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/user-notes', {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/user-notes`, {
         withCredentials: true,
       });
       if (response.data.success) {
@@ -382,7 +382,7 @@ const filteredCategories = categories.filter((cat) => {
   const handleArchive = async (e, noteId) => {
     e.stopPropagation();
     try {
-      const response = await axios.put(`http://localhost:5000/api/archive-note/${noteId}`, {}, { withCredentials: true });
+      const response = await axios.put(`${import.meta.env.VITE_API_URL}/api/archive-note/${noteId}`, {}, { withCredentials: true });
       if (response.data?.success) {
         toast.success(response.data.message || "Note archived successfully");
         getAllNotes();
@@ -399,7 +399,7 @@ const filteredCategories = categories.filter((cat) => {
   const handlePermanentDelete = async (e, noteId) => {
     e.stopPropagation();
     try {
-      const response = await axios.delete(`http://localhost:5000/api/permanent-delete/${noteId}`, { withCredentials: true });
+      const response = await axios.delete(`${import.meta.env.VITE_API_URL}/api/permanent-delete/${noteId}`, { withCredentials: true });
       if (response.data?.success) {
         toast.success(`Note ${noteId} deleted successfully`);
         getAllNotes();
@@ -417,7 +417,7 @@ const filteredCategories = categories.filter((cat) => {
     e.stopPropagation();
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/pin-note/${noteId}`,
+        `${import.meta.env.VITE_API_URL}/api/pin-note/${noteId}`,
         {},
         { withCredentials: true }
       );
@@ -435,7 +435,7 @@ const filteredCategories = categories.filter((cat) => {
     e.stopPropagation();
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/delete-note/${noteId}`,
+        `${import.meta.env.VITE_API_URL}/api/delete-note/${noteId}`,
         {},
         { withCredentials: true }
       );

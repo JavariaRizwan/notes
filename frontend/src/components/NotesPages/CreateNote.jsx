@@ -31,7 +31,7 @@ const CreateNote = ({ isOpen, onClose, onSaveNote, isEditingNote = null }) => {
 
 const getCategories=async()=>{
     try {
-        const res=await axios.get("http://localhost:5000/api/categories", {withCredentials:true});
+        const res=await axios.get(`${import.meta.env.VITE_API_URL}/api/categories`, {withCredentials:true});
         if(res.data.success){
             setCategories(res.data.response || []);
         }
@@ -94,8 +94,8 @@ if (isEditingNote) {
         try {
             const noteId = isEditingNote?._id;
             const url = isEditingNote 
-                ? `http://localhost:5000/api/edit-note/${noteId}` 
-                : 'http://localhost:5000/api/create-note';
+                ? `${import.meta.env.VITE_API_URL}/api/edit-note/${noteId}` 
+                : `${import.meta.env.VITE_API_URL}/api/create-note`;
             
             const method = isEditingNote ? axios.put : axios.post;
             const response = await method(url, { ...formData, description: content }, { withCredentials: true });

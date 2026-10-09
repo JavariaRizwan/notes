@@ -12,7 +12,7 @@ const UserProfile = ({ onLogout }) => {
 
     const handleLogout = async () => {
         try {
-            await axios.post('http://localhost:5000/api/logout', {}, { withCredentials: true });
+            await axios.post(`${import.meta.env.VITE_API_URL}/api/logout`, {}, { withCredentials: true });
             toast.success('User Logged out');
             if (onLogout) onLogout();
             navigate('/signin', { replace: true });
@@ -27,7 +27,7 @@ const UserProfile = ({ onLogout }) => {
     useEffect(() => {
         const getUserData = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/user-notes', { withCredentials: true });
+                const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/user-notes`, { withCredentials: true });
                 setProfileData({ user: response.data.success ? response.data.user : null, notes: response.data.success ? response.data.notes : [], loading: false });
             } catch (error) {
                 console.error('Failed to get Profile', error.message);

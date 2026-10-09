@@ -70,7 +70,7 @@ try {
         await userEvent.click(logoutButton);
         await waitFor(() => {
             expect(axios.post).toHaveBeenCalledWith(
-                'http://localhost:5000/api/logout',
+                `${import.meta.env.VITE_API_URL}/api/logout`,
                 {},
                 { withCredentials: true }
             );

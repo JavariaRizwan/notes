@@ -63,7 +63,7 @@ const [formData, setFormData]=useState({c_name:''});
   const navigate=useNavigate();
 const handleLogout=async()=>{
   try {
-    await axios.post('http://localhost:5000/api/logout', 
+    await axios.post(`${import.meta.env.VITE_API_URL}/api/logout`, 
       {},
       {withCredentials:true}
     );
@@ -93,7 +93,7 @@ const handleChange=(e)=>{
   const handleSaveCategory = async (e) => {
     e.stopPropagation();
     try {
-      const response = await axios.post(`http://localhost:5000/api/save-category`,
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/save-category`,
         {c_name: formData.c_name},
          { withCredentials: true });
       if (response.data?.success) {

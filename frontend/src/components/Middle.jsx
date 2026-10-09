@@ -15,7 +15,7 @@ const Middle = ({ onLogout }) => {
     
 const handleGetCategories = async () => {
   try {
-    const response = await axios.get("http://localhost:5000/api/categories", { withCredentials: true });
+    const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/categories`, { withCredentials: true });
     if (response.data.success) {
       setCategories(response.data.response);
     } else {

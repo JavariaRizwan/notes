@@ -16,7 +16,7 @@ export default function Navbar({ onToggleSidebar, onLogout, searchQuery, setSear
 
 const handleLogout=async()=>{
   try {
-    await axios.post('http://localhost:5000/api/logout', 
+    await axios.post(`${import.meta.env.VITE_API_URL}/api/logout`, 
       {},
       {withCredentials:true}
     );
@@ -31,7 +31,7 @@ const handleLogout=async()=>{
 useEffect(() => {
   const getUserName = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/verify', {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/verify`, {
         withCredentials: true,
       });
 

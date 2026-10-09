@@ -52,7 +52,7 @@ export default function Home({ onGetStarted, onSignIn }) {
   useEffect(() => {
     const checkExistingSession = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/user-notes', {
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/user-notes`, {
           withCredentials: true,
         });
 

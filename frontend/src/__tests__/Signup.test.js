@@ -47,7 +47,7 @@ describe('SignUp Component', () => {
     await waitFor(() => {
 
       expect(axios.post).toHaveBeenCalledWith(
-        'http://localhost:5000/api/save-user',
+          `${import.meta.env.VITE_API_URL}/api/save-user`,
         expect.objectContaining({
           username: 'test_user',
           email: 'testing1@gmail.com',

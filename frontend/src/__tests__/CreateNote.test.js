@@ -68,7 +68,7 @@ it('successfully creates a new note and calls onSaveNote', async () => {
 try{
     await waitFor(() => {
             expect(axios.post).toHaveBeenCalledWith(
-                'http://localhost:5000/api/create-note',
+                `${import.meta.env.VITE_API_URL}/api/create-note`,
                 expect.objectContaining({
                     title: 'Test Note',
                     description: '',

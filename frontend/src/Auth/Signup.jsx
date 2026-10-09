@@ -49,7 +49,7 @@ const SignUp=({ onSuccess })=> {
       
     try {
 
-      const response= await axios.post('http://localhost:5000/api/save-user', formData);
+      const response= await axios.post(`${import.meta.env.VITE_API_URL}/api/save-user`, formData);
       
       if (response.data.success) {
       toast.success("User registered successfully!");
