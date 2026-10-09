@@ -4,8 +4,8 @@ import { Toaster, toast } from 'react-hot-toast';
 
 
 import Home from './components/Home';
-import SignUp from './Auth/SignUp';
-import SignIn from './Auth/SignIn';
+import SignUp from './Auth/Signup';
+import SignIn from './Auth/Signin';
 import Middle from './components/Middle';
 import NotFound from './components/NotFound';
 import ProtectedRoute from './Auth/ProtectedRoute';
