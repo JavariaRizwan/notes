@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const notes = new mongoose.Schema({
     userId: {
-        type: mongoose.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },
@@ -15,7 +15,7 @@ const notes = new mongoose.Schema({
         required: true
     },
     category: {
-  type: mongoose.Types.ObjectId,
+  type: mongoose.Schema.Types.ObjectId,
 //  default: null,
   ref:'Category'
 },
